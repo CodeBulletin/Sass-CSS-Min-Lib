@@ -1,0 +1,91 @@
+@mixin btn($bg-color: #e2e2e2) {
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: $padding-1 $padding-1 * 2;
+    border-radius: $border-radius-1;
+    background-color: $bg-color;
+}
+
+.btn {
+    @include btn;
+}
+
+@each $key, $val in $colors {
+    .btn-#{$key} {
+        @include btn($val);
+        &:hover {
+            background-color: lighten($val, 5);
+        }
+    }
+
+    .btn-complement-#{$key} {
+        @include btn($val);
+        color: light-comp($val);
+        &:hover {
+            background-color: lighten($val, 5);
+            color: light-comp(lighten($val, 5));
+        }
+    }
+
+    .btn-outlined-#{$key} {
+        @include btn(white);
+        border: $border-thickness-1 solid $val;
+        &:hover {
+            border: $border-thickness-1 solid lighten($val, 5);
+        }
+    }
+
+    @for $i from 1 through 9 {
+        @if($val != black and $val != white) {
+            .btn-#{$key}-light-#{$i} {
+                @include btn(mix(white, $val, $i*9));
+                &:hover {
+                    background-color: lighten(mix(white, $val, $i*9), 5);
+                }
+            }
+
+            .btn-complement-#{$key}-light-#{$i} {
+                @include btn(mix(white, $val, $i*9));
+                color: light-comp(mix(white, $val, $i*9));
+                &:hover {
+                    background-color: lighten(mix(white, $val, $i*9), 5);
+                    color: light-comp(lighten(mix(white, $val, $i*9), 5));
+                }
+            }
+        
+            .btn-outlined-#{$key}-light-#{$i} {
+                @include btn(white);
+                border: $border-thickness-1 solid mix(white, $val, $i*9);
+                &:hover {
+                    border: $border-thickness-1 solid lighten(mix(white, $val, $i*9), 5);
+                }
+            }
+
+            .btn-#{$key}-dark-#{$i} {
+                @include btn(mix(black, $val, $i*9));
+                &:hover {
+                    background-color: lighten(mix(black, $val, $i*9), 5);
+                }
+            }
+
+            .btn-complement-#{$key}-dark-#{$i} {
+                @include btn(mix(black, $val, $i*9));
+                color: light-comp(mix(black, $val, $i*9));
+                &:hover {
+                    background-color: lighten(mix(black, $val, $i*9), 5);
+                    color: light-comp(lighten(mix(black, $val, $i*9), 5));
+                }
+            }
+        
+            .btn-outlined-#{$key}-dark-#{$i} {
+                @include btn(white);
+                border: $border-thickness-1 solid mix(black, $val, $i*9);
+                &:hover {
+                    border: $border-thickness-1 solid lighten(mix(black, $val, $i*9), 5);
+                }
+            }
+        }
+    }
+}

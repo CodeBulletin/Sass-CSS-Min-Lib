@@ -1,6 +1,16 @@
 @import 'fonts';
+
 @import 'variables';
+@import 'functions';
+
 @import 'base';
+@import 'breakpoints';
 
-@import 'Components/card'
+@import 'colors';
+@import 'utilities';
 
+@import 'grid';
+
+@import 'Components/card';
+@import 'Components/btn';
+@import 'Components/navbar';
