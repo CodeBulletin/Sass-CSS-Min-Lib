@@ -10,7 +10,7 @@ function buildStyles() {
 }
 
 function watchTask() {
-    watch(['SassSource/**/*.scss'], buildStyles)  
+    watch(['SassSource/**/*.scss', '*.html'], buildStyles)  
 }
 
 exports.default = series(buildStyles, watchTask)
