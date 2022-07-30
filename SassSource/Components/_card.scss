@@ -1,0 +1,20 @@
+.card {
+    display: block;
+    padding: $padding-1;
+    border: $border-thickness-1 solid #ddd;
+    box-shadow: $box-shadow;
+
+    .card-title {
+        font-size: $font-size-1;
+        padding-bottom: $padding-1;
+        font-weight: bold;
+    }
+
+    .card-body {
+        font-size: $font-size-1;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+}
